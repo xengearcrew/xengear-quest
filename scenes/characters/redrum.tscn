@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://om0l8xnhb63c"]
+
+[ext_resource type="Texture2D" uid="uid://dae7hepvcmujv" path="res://art/characters/redrum.png" id="1_m6gi0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt2tj"]
+
+[sub_resource type="Animation" id="Animation_h5m7j"]
+resource_name = "redrum_idle"
+length = 1.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 3, 4, 5, 5, 5, 4, 3, 3]
+}
+
+[sub_resource type="Animation" id="Animation_sfvif"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4ehdo"]
+resource_name = "redrum_run"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twcr5"]
+_data = {
+"RESET": SubResource("Animation_sfvif"),
+"redrum_idle": SubResource("Animation_h5m7j"),
+"redrum_run": SubResource("Animation_4ehdo")
+}
+
+[node name="Redrum" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nt2tj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_twcr5")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m6gi0")
+hframes = 10
+vframes = 6

@@ -1,0 +1,10 @@
+# to upload web locally:
+scp -r *project-name*/release/web username@*local-server-ip*:~
+# then copy to correct dir under /var/www/html/
+#
+# coi-serviceworker.js must be included in web/
+# and it must be referenced from the godot project's main html page
+# to achieve this, in the Head Include section of the Export "Web" preset, you should put this line:
+# <script src="coi-serviceworker.js"></script>
+# more info:
+# https://notebook.chaopricha.com/?p=276
